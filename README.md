@@ -9,6 +9,9 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Virtual Machine](azure_virtual_machine.html)
 
+## Azure Baremetal
+
+- [Nutanix NC2 on Azure](nutanix_cloud_clusters_on_azure.html)
 
 ## Kubernetes
 
@@ -33,6 +36,9 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 - [Azure Kubernetes Service Monitoring](monitoring_kubernetes_with_azure.html)
 
 - [Azure Kubernetes Service versus Azure Red Hat OpenShift](aks_vs_aro.html)
+
+## Managed Services (PaaS)
+
 
 
 ## FinOps & Azure
