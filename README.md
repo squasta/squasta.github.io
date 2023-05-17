@@ -1,12 +1,28 @@
 # squasta.github.io
-Stan's mindmaps repo  (coming soon ;))
-work in progress
+Stan's mindmaps repo  (work in progress...)
+
+## AZ 900 : preparation guide
 
 - [Azure Survival Kit](azure_survival_kit.html)
 
+
+## Kubernetes
+
+- [Kubernetes](kubernetes.html)
+
+- [Kubernetes Tools](outils_pour_kubernetes.html)
+
 ## Kubernetes and Azure
 
+- [Azure Kubernetes Service](azure_kubernetes_service.html)
+
 - [Azure Kubernetes Service with Azure Backup](azure_kubernetes_service_backup.html)
+
+- [Azure Container Apps](azure_container_apps.html)
+
+- [Azure Container Registry](azure_container_registry.html)
+
+- [Azure Container Storage](azure_container_storage.html)
 
 
 ## FinOps & Azure
