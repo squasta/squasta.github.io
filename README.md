@@ -1,2 +1,2 @@
 # squasta.github.io
-Stan's mindmaps
+Stan's mindmaps repo  (coming soon ;))
