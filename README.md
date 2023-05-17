@@ -44,6 +44,18 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 ## DP 900 : preparation guide
 
-- [DP 900 REAL-TIME ANALYTICS](dp_900_real-time_analytics.html)
+- [Azure DP 900 Basics](dp_900.html)
+
+- [DP 900 Fundamentals Data Concepts](dp_900_fundamental_relational_data_concept.html)
+
+- [DP 900 Relational Databases](dp_900_relational_database.html)
+
+- [DP 900 Non relational Data in Azure](dp_900_non-relational_data_in_azure.html)
+
+- [DP 900 Fundamentals Data Visualization](dp_900_fundamentals_of_data_visualization.html)
+
+- [DP 900 Data Analytics](dp_900_data_analytics_in_azure.html)
+
+- [DP 900 Real-Time Analytics](dp_900_real-time_analytics.html)
 
 
