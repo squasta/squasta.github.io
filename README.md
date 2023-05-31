@@ -54,6 +54,9 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [FinOps et Data](finops_and_data.html)
 
+- [FinOps Certified Practitioner](finops_certified_practitioner.html)
+
+- [FinOps dans Azure](finops_dans_azure.html)
 
 
 ## DP 900 : preparation guide
