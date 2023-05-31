@@ -45,7 +45,14 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Savings Plan recommendations](azure_savings_plans_recommendations.html)
 
+- [Azure Spot](azure_spot.html)
+
+- [Azure Reservations](azure_reservations.html)
+
 - [Azure Cost Management and AWS](azure_cost_management_and_aws.html)
+
+
+
 
 
 ## DP 900 : preparation guide
