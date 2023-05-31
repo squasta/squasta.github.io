@@ -37,6 +37,7 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Kubernetes Service versus Azure Red Hat OpenShift](aks_vs_aro.html)
 
+
 ## Managed Services (PaaS)
 
 
@@ -51,7 +52,7 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Cost Management and AWS](azure_cost_management_and_aws.html)
 
-
+- [FinOps et Data](finops_and_data.html)
 
 
 
