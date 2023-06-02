@@ -37,6 +37,20 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Kubernetes Service versus Azure Red Hat OpenShift](aks_vs_aro.html)
 
+## Azure Storage
+
+- [Azure Storage Account](azure_storage_account.html)
+
+- [Transfert Data to Azure Storage](transfert_data_to_azure_storage.html)
+
+- [Azure Managed Disk](azure_managed_disk.html)
+
+- [Azure File](azure_file.html)
+
+- [Azure NetApp File](azure_netapp_files.html)
+
+- [Azure File versus Azure NetApp File](azure_file_or_azure_netapp_files.html)
+
 
 ## Managed Services (PaaS)
 
