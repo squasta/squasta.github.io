@@ -56,6 +56,9 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 ## Managed Services (PaaS)
 
+## Frameworks
+
+- [Microsoft Azure Well Architected Framework](microsoft_azure_well-architected_framework.html)
 
 
 ## FinOps & Azure
@@ -95,3 +98,8 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 ## GitHub et Azure DevOps
 
 - [GitHub versus Azure DevOps](github_vs_azure_devops.html)
+
+
+## Infrastructure as Code
+
+- [Tools for Terraform](terraform_tools.html)
