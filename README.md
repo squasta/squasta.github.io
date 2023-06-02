@@ -5,6 +5,8 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Survival Kit](azure_survival_kit.html)
 
+- [Azure Tools](outils_azure.html)
+
 ## Azure Virtual Machine
 
 - [Azure Virtual Machine](azure_virtual_machine.html)
@@ -90,3 +92,8 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 - [DP 900 Real-Time Analytics](dp_900_real-time_analytics.html)
 
 
+## GitHub et Azure DevOps
+
+- [GitHub versus Azure DevOps](github_vs_azure_devops.html)
+
+- 
