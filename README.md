@@ -95,5 +95,3 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 ## GitHub et Azure DevOps
 
 - [GitHub versus Azure DevOps](github_vs_azure_devops.html)
-
-- 
