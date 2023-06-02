@@ -53,12 +53,16 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure File versus Azure NetApp File](azure_file_or_azure_netapp_files.html)
 
+- [Storage Migration](storage_migration.html)
+
 
 ## Managed Services (PaaS)
 
 ## Frameworks
 
 - [Microsoft Azure Well Architected Framework](microsoft_azure_well-architected_framework.html)
+
+- [Azure Cloud Adoption Framework (CAF) Tools](cloud_adoption_framework_tools.html)
 
 
 ## FinOps & Azure
