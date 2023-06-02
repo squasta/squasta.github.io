@@ -1,5 +1,5 @@
 # squasta.github.io
-Stanislas Quastana's mindmaps repo  (work in progress...)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (work in progress...)
 
 ## AZ 900 : preparation guide
 
