@@ -58,6 +58,13 @@
 
 ## Managed Services (PaaS)
 
+
+## Azure Arc and Azure Stack HCI
+
+- [Linux Management with Azure Arc for Server](arc_server_linux_management.html)
+
+
+
 ## Frameworks
 
 - [Microsoft Azure Well Architected Framework](microsoft_azure_well-architected_framework.html)
