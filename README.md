@@ -63,6 +63,13 @@
 
 - [Linux Management with Azure Arc for Server](arc_server_linux_management.html)
 
+- [Azure Arc VM Management](azure_arc_vm_management.html)
+
+- [Azure Stack HCI](azure_stack_hci.html)
+
+- [Azure Stack HCI Networking](azure_stack_hci_networking.html)
+
+- [Azure Stack HCI Single Node](azure_stack_hci_single_node.html)
 
 
 ## Frameworks
