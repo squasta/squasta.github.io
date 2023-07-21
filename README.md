@@ -1,9 +1,11 @@
 # squasta.github.io
-Stanislas Quastana's mindmaps repo  (work in progress...)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (work in progress...)
 
 ## AZ 900 : preparation guide
 
 - [Azure Survival Kit](azure_survival_kit.html)
+
+- [Azure Tools](outils_azure.html)
 
 ## Azure Virtual Machine
 
@@ -37,9 +39,44 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 
 - [Azure Kubernetes Service versus Azure Red Hat OpenShift](aks_vs_aro.html)
 
+## Azure Storage
+
+- [Azure Storage Account](azure_storage_account.html)
+
+- [Transfert Data to Azure Storage](transfert_data_to_azure_storage.html)
+
+- [Azure Managed Disk](azure_managed_disk.html)
+
+- [Azure File](azure_file.html)
+
+- [Azure NetApp File](azure_netapp_files.html)
+
+- [Azure File versus Azure NetApp File](azure_file_or_azure_netapp_files.html)
+
+- [Storage Migration](storage_migration.html)
+
 
 ## Managed Services (PaaS)
 
+
+## Azure Arc and Azure Stack HCI
+
+- [Linux Management with Azure Arc for Server](arc_server_linux_management.html)
+
+- [Azure Arc VM Management](azure_arc_vm_management.html)
+
+- [Azure Stack HCI](azure_stack_hci.html)
+
+- [Azure Stack HCI Networking](azure_stack_hci_networking.html)
+
+- [Azure Stack HCI Single Node](azure_stack_hci_single_node.html)
+
+
+## Frameworks
+
+- [Microsoft Azure Well Architected Framework](microsoft_azure_well-architected_framework.html)
+
+- [Azure Cloud Adoption Framework (CAF) Tools](cloud_adoption_framework_tools.html)
 
 
 ## FinOps & Azure
@@ -76,7 +113,16 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 - [DP 900 Real-Time Analytics](dp_900_real-time_analytics.html)
 
 
+## GitHub et Azure DevOps
+
+- [GitHub versus Azure DevOps](github_vs_azure_devops.html)
+
+
+## Infrastructure as Code
+
+- [Tools for Terraform](terraform_tools.html)
+
+
 ## AWS
 
 - [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html)
-
