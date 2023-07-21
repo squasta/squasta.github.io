@@ -76,3 +76,7 @@ Stanislas Quastana's mindmaps repo  (work in progress...)
 - [DP 900 Real-Time Analytics](dp_900_real-time_analytics.html)
 
 
+## AWS
+
+- [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html)
+
