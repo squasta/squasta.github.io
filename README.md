@@ -58,10 +58,26 @@
 
 ## Managed Services (PaaS)
 
+- [Azure Chaos Studio](azure_chaos_studio.html)
+
+- [Azure managed Grafana](azure_managed_grafana.html)
+
+- [Azure managed Prometheus](azure_managed_prometheus.html)
+
+- [F5 nginx for Azure](nginx_for_azure.html)
+
 
 ## Azure Arc and Azure Stack HCI
 
+- [Azure Arc](azure_arc.html)
+
+- [Azure Arc Server extensions](azure_arc_enabled_servers_extensions.html)
+
+- [Azure Container Apps on Azure Arc](azure_container_apps_on_azure_arc.html)
+
 - [Linux Management with Azure Arc for Server](arc_server_linux_management.html)
+
+- [Azure Arc enabled Kubernetes](arc_enabled_kubernetes.html)
 
 - [Azure Arc VM Management](azure_arc_vm_management.html)
 
