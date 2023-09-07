@@ -67,6 +67,13 @@
 - [F5 nginx for Azure](nginx_for_azure.html)
 
 
+## Azure Security
+
+- [Azure Security Overview](azure_security_overview.html)   [SVG version](AzureSecurityOverview.svg)
+
+- [Azure Key Vault Managed HSM](azure_key_vault_managed_hsm.html)  [SVG version](AzureKeyVaultManagedHSM.svg)
+
+
 ## Azure Arc and Azure Stack HCI
 
 - [Azure Arc](azure_arc.html)
@@ -142,3 +149,13 @@
 ## AWS
 
 - [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html)
+
+
+## Observability
+
+- [OpenTelemetry](opentelemetry.html)  [SVG version](OpenTelemetry.svg)
+
+
+## Google Cloud Platform
+
+- [Google Cloud Platform](google_cloud_platform.html)
