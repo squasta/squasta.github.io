@@ -56,8 +56,7 @@
 
 - [Storage Migration](storage_migration.html)
 
-- [Azure Elastic SAN](azure_elastic_san.html)
-                     [SVG version](AzureElasticSAN.svg)
+- [Azure Elastic SAN](azure_elastic_san.html)[ -- SVG version](AzureElasticSAN.svg)
 
 
 ## Managed Services (PaaS)
@@ -73,11 +72,9 @@
 
 ## Azure Security
 
-- [Azure Security Overview](azure_security_overview.html)  
-                           [SVG version](AzureSecurityOverview.svg)
+- [Azure Security Overview](azure_security_overview.html) [ -- SVG version](AzureSecurityOverview.svg)
 
-- [Azure Key Vault Managed HSM](azure_key_vault_managed_hsm.html) 
-                           [SVG version](AzureKeyVaultManagedHSM.svg)
+- [Azure Key Vault Managed HSM](azure_key_vault_managed_hsm.html) [ -- SVG version](AzureKeyVaultManagedHSM.svg)
 
 
 ## Azure Arc and Azure Stack HCI
@@ -159,8 +156,7 @@
 
 ## Observability
 
-- [OpenTelemetry](opentelemetry.html) 
-                                      [SVG version](OpenTelemetry.svg)
+- [OpenTelemetry](opentelemetry.html) [ -- SVG version](OpenTelemetry.svg)
 
 
 ## Google Cloud Platform
