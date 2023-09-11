@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : september 7th 2023)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : september 11th 2023)
 
 ## AZ 900 : preparation guide
 
@@ -39,6 +39,7 @@
 
 - [Azure Kubernetes Service versus Azure Red Hat OpenShift](aks_vs_aro.html)
 
+
 ## Azure Storage
 
 - [Azure Storage Account](azure_storage_account.html)
@@ -55,6 +56,9 @@
 
 - [Storage Migration](storage_migration.html)
 
+- [Azure Elastic SAN](azure_elastic_san.html)
+                     [SVG version](AzureElasticSAN.svg)
+
 
 ## Managed Services (PaaS)
 
@@ -69,9 +73,11 @@
 
 ## Azure Security
 
-- [Azure Security Overview](azure_security_overview.html)   [SVG version](AzureSecurityOverview.svg)
+- [Azure Security Overview](azure_security_overview.html)  
+                           [SVG version](AzureSecurityOverview.svg)
 
-- [Azure Key Vault Managed HSM](azure_key_vault_managed_hsm.html)  [SVG version](AzureKeyVaultManagedHSM.svg)
+- [Azure Key Vault Managed HSM](azure_key_vault_managed_hsm.html) 
+                           [SVG version](AzureKeyVaultManagedHSM.svg)
 
 
 ## Azure Arc and Azure Stack HCI
@@ -153,7 +159,8 @@
 
 ## Observability
 
-- [OpenTelemetry](opentelemetry.html)  [SVG version](OpenTelemetry.svg)
+- [OpenTelemetry](opentelemetry.html) 
+                                      [SVG version](OpenTelemetry.svg)
 
 
 ## Google Cloud Platform
