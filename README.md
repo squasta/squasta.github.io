@@ -39,6 +39,8 @@
 
 - [Azure Kubernetes Service versus Azure Red Hat OpenShift](aks_vs_aro.html)
 
+- [Azure Kubernetes Fleet Manager](azure_kubernetes_fleet_manager.html) [ -- SVG version](AzureKubernetesFleetManager.svg)
+
 
 ## Azure Storage
 
