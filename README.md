@@ -41,6 +41,9 @@
 
 - [Azure Kubernetes Fleet Manager](azure_kubernetes_fleet_manager.html) [ -- SVG version](AzureKubernetesFleetManager.svg)
 
+## Azure Networking
+
+- [Azure Networking](azurenetworking.html)
 
 ## Azure Storage
 
