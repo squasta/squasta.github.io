@@ -1,5 +1,15 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : september 18th 2023)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : february 1st 2024)
+
+Youy will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
+
+
+
+## Nutanix Hybrid multicloud
+
+- [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
+
+- [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)
 
 ## AZ 900 : preparation guide
 
@@ -110,7 +120,9 @@
 - [Azure Cloud Adoption Framework (CAF) Tools](cloud_adoption_framework_tools.html)
 
 
-## FinOps & Azure
+## FinOps
+
+- [FinOps Certified Practitioner](finops_certified_practitioner.html)
 
 - [Azure Savings Plan recommendations](azure_savings_plans_recommendations.html)
 
@@ -122,12 +134,10 @@
 
 - [FinOps et Data](finops_and_data.html)
 
-- [FinOps Certified Practitioner](finops_certified_practitioner.html)
-
 - [FinOps dans Azure](finops_dans_azure.html)
 
 
-## DP 900 : preparation guide
+## Azure DP 900 : preparation guide
 
 - [Azure DP 900 Basics](dp_900.html)
 
@@ -157,6 +167,7 @@
 ## AWS
 
 - [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html)
+- [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
 
 ## Observability
