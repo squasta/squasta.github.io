@@ -9,7 +9,7 @@ Youy will find here a lot of mindmaps full of links to documentations on Nutanix
 
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
-- [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)
+- [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)  [ -- PDF version](nutanix_cloud_clusters_on_azure.pdf)
 
 ## AZ 900 : preparation guide
 
