@@ -7,6 +7,8 @@ Youy will find here a lot of mindmaps full of links to documentations on Nutanix
 
 ## Nutanix Hybrid multicloud
 
+- [Nutanix Cloud Cluster (NC2)](nutanixnc2.html) [ -- PDF version](Nutanix_Cloud_Clusters_(NC2).pdf)
+
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)  [ -- PDF version](nutanix_cloud_clusters_on_azure.pdf)
