@@ -1,7 +1,7 @@
 # squasta.github.io
 [Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : february 1st 2024)
 
-Youy will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
+You will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
 
 
 
