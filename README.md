@@ -13,6 +13,8 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)  [ -- PDF version](nutanix_cloud_clusters_on_azure.pdf)
 
+- [Nutanix on OVHcloud](nutanix_on_OVHcloud.html) [ -- PDF version](nutanix_on_OVHcloud.pdf) 
+
 ## AZ 900 : preparation guide
 
 - [Azure Survival Kit](azure_survival_kit.html)
