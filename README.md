@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : april 26th 2024)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : june 4th 2024)
 
 You will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
 
@@ -12,6 +12,8 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)  [ -- PDF version](nutanix_cloud_clusters_on_azure.pdf)
+
+- [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
 
 - [Nutanix on OVHcloud](nutanix_on_OVHcloud.html) [ -- PDF version](nutanix_on_OVHcloud.pdf) 
 
