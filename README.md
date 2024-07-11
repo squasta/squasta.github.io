@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : July 5th 2024)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : July 11th 2024)
 
 You will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
 
@@ -18,6 +18,8 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 - [Nutanix on OVHcloud](nutanix_on_OVHcloud.html) [ -- PDF version](nutanix_on_OVHcloud.pdf) 
 
 - [Nutanix Cloud Cluster (NC2) on Azure - User VPC Configuration workflow](configurationvpcazure.html) [ -- PDF version](configurationvpcazure.pdf) 
+
+- [Nutanix Cloud Cluster (NC2) and Disaster Recovery](nc2anddisasterrecovery.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
 
 ## AZ 900 : preparation guide
 
