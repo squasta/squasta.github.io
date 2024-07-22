@@ -1,9 +1,11 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : July 11th 2024)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : July 22th 2024)
 
 You will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
 
+## Nutanix Cloud Platform
 
+- [Nutanix Cloud Platform - Big Overview](nutanixcloudplatform.html)  [ -- PDF version](nutanixcloudplatform.pdf)
 
 ## Nutanix Hybrid multicloud
 
@@ -63,7 +65,7 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 ## Azure Networking
 
-- [Azure Networking](azurenetworking.html)
+- [Azure Networking](azurenetworking.html) [ -- PDF version](azurenetworking.pdf)
 
 ## Azure Storage
 
