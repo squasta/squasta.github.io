@@ -9,19 +9,21 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 ## Nutanix Hybrid multicloud
 
+- [Nutanix on OVHcloud](nutanix_on_OVHcloud.html) [ -- PDF version](nutanix_on_OVHcloud.pdf) 
+
 - [Nutanix Cloud Cluster (NC2)](nutanixnc2.html) [ -- PDF version](Nutanix_Cloud_Clusters_(NC2).pdf)
 
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
+- [Nutanic Cloud Cluster (NC2) on AWS - Type of metal instances](nc2onaws-typeofnodes.html) [ -- PDF version](nc2onaws-typeofnodes.pdf)
+
 - [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)  [ -- PDF version](nutanix_cloud_clusters_on_azure.pdf)
 
-- [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
-
-- [Nutanix on OVHcloud](nutanix_on_OVHcloud.html) [ -- PDF version](nutanix_on_OVHcloud.pdf) 
+- [Nutanix Cloud Cluster (NC2) on Azure - Cloud Resources](nc2onazure-cloudresources.html) [ -- PDF version](nc2onazure-cloudresources.pdf) 
 
 - [Nutanix Cloud Cluster (NC2) on Azure - User VPC Configuration workflow](configurationvpcazure.html) [ -- PDF version](configurationvpcazure.pdf) 
 
-- [Nutanix Cloud Cluster (NC2) on Azure - Cloud Resources](nc2onazure-cloudresources.html) [ -- PDF version](nc2onazure-cloudresources.pdf) 
+- [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
 
 - [Nutanix Cloud Cluster (NC2) and Disaster Recovery](nc2anddisasterrecovery.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
 
