@@ -49,6 +49,10 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Kubernetes Tools](outils_pour_kubernetes.html)
 
+## Kubernetes and Nutanix
+
+- [Nutanix Kubernetes Platform](nutanixkubernetesplatform.html) [-- PDF version](nutanixkubernetesplatform.pdf)
+
 ## Kubernetes and Azure
 
 - [Azure Kubernetes Service](azure_kubernetes_service.html)
