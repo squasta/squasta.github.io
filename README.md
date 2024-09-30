@@ -15,7 +15,9 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
-- [Nutanic Cloud Cluster (NC2) on AWS - Type of metal instances](nc2onaws-typeofnodes.html) [ -- PDF version](nc2onaws-typeofnodes.pdf)
+- [Nutanix Cloud Cluster (NC2) on AWS - Type of metal instances](nc2onaws-typeofnodes.html) [ -- PDF version](nc2onaws-typeofnodes.pdf)
+
+- [Nutanix Cloud Cluster (NC2) on AWS - Deployment workflow](nc2onawsdeploymentworkflow.html) [ -- PDF version](nc2onawsdeploymentworkflow.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on Azure](nutanix_cloud_clusters_on_azure.html)  [ -- PDF version](nutanix_cloud_clusters_on_azure.pdf)
 
