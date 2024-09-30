@@ -29,6 +29,8 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Cloud Cluster (NC2) and Disaster Recovery](nc2anddisasterrecovery.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
 
+- [Multicloud Snapshot Technology (MST) with Pilot Light Deployment](mstwithpilotlight.hmtl)    [ -- PDF version](mstwithpilotlight.pdf)
+
 - [Nutanix Licenses for Nutanix Cloud Clusters (NC2)](nutanixlicencesfornc2.html) [-- PDF version](nutanixlicencesfornc2.pdf)
 
 ## AZ 900 : preparation guide
