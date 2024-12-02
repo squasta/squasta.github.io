@@ -3,7 +3,7 @@
 
 You will find here a lot of mindmaps full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud Plaform...
 
-[Contact me on Linkedin](https://www.linkedin.com/in/stanislasquastana/) 
+[Contact me on LinkedIn](https://www.linkedin.com/in/stanislasquastana/) 
 
 ## Nutanix Cloud Platform
 
