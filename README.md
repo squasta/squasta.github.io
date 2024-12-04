@@ -39,6 +39,8 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Licenses for Nutanix Cloud Clusters (NC2)](nutanixlicencesfornc2.html) [-- PDF version](nutanixlicencesfornc2.pdf)
 
+- [Nutanix Certified Professional - Cloud Integration - AWS - Preparation Guide](certificationnutanixcloudintegrationaws.html) [-- PDF version](certificationnutanixcloudintegrationaws.pdf)
+
 ## AZ 900 : preparation guide
 
 - [Azure Survival Kit](azure_survival_kit.html)
