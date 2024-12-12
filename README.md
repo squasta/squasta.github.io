@@ -29,6 +29,8 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Cloud Cluster (NC2) on Azure - Cloud Resources](nc2onazure-cloudresources.html) [ -- PDF version](nc2onazure-cloudresources.pdf) 
 
+- [Nutanix Cloud Cluster (NC2) on Azure - Deployment workflow](nc2onazuredeploymentworkflow.html) [ -- PDF version](nc2onazuredeploymentworkflow.pdf) 
+
 - [Nutanix Cloud Cluster (NC2) on Azure - User VPC Configuration workflow](configurationvpcazure.html) [ -- PDF version](configurationvpcazure.pdf) 
 
 - [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
