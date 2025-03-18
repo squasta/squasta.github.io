@@ -43,6 +43,9 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Certified Professional - Cloud Integration - AWS - Preparation Guide](certificationnutanixcloudintegrationaws.html) [-- PDF version](certificationnutanixcloudintegrationaws.pdf)
 
+- [Nutanix Layer 2 Subnet Extension](nutanixlayer2subnetextension.html) [-- PDF version](nutanixlayer2subnetextension.pdf)
+
+
 ## AZ 900 : preparation guide
 
 - [Azure Survival Kit](azure_survival_kit.html)
