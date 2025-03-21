@@ -37,7 +37,7 @@ You will find here a lot of mindmaps full of links to documentations on Nutanix,
 
 - [Nutanix Cloud Cluster (NC2) and Disaster Recovery](nc2anddisasterrecovery.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
 
-- [Nutanix Disaster Recovery configuration workflow with NC2] (drtonc2configurationworkflow.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
+- [Nutanix Disaster Recovery configuration workflow with NC2](drtonc2configurationworkflow.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
 
 - [Multicloud Snapshot Technology (MST) with Pilot Light Deployment](mstwithpilotlight.html)    [ -- PDF version](drtonc2configurationworkflow.pdf)
 
