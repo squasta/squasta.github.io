@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : March 21th 2025)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : April 22th 2025)
 
 You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud Plaform...
 
@@ -8,6 +8,9 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 ## Nutanix Cloud Platform
 
 - [Nutanix Cloud Platform - Big Overview](nutanixcloudplatform.html)  [ -- PDF version](nutanixcloudplatform.pdf)
+
+- [Nutanix Cloud Management (NCM)](nutanixcloudmanagement.html)  [ -- PDF version](nutanixcloudmanagement.pdf)
+
 
 ## Nutanix Hybrid multicloud
 
@@ -207,7 +210,7 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 ## AWS
 
-- [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html)
+- [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html) [ -- PDF version](aws_foundamentals.pdf) 
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
 
 
