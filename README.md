@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : April 22th 2025)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : May 2 2025)
 
 You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud Plaform...
 
@@ -25,6 +25,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 - [Nutanix Cloud Cluster (NC2) on AWS - Type of metal instances](nc2onaws-typeofnodes.html) [ -- PDF version](nc2onaws-typeofnodes.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on AWS - Deployment workflow](nc2onawsdeploymentworkflow.html) [ -- PDF version](nc2onawsdeploymentworkflow.pdf)
+
+- [Nutanix Cloud Cluster (NC2) on AWS - Networking in detail](nc2onaws-networking.html) [ -- PDF version](nc2onaws-networking.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on AWS - Flow VPC Configuration workflow](configurationvpcaws.html)  [ -- PDF version](configurationvpcaws.pdf)
 
