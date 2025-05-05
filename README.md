@@ -158,6 +158,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Azure Stack HCI Single Node](azure_stack_hci_single_node.html)
 
+- [Windows Server Pay-as-you-go with Azure Arc](windowsserverpaygwithazurearc.html) [-- PDF version](windowsserverpaygwithazurearc.pdf)
+
 
 ## Frameworks
 
