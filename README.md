@@ -20,6 +20,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Nutanix on OVHcloud](nutanix_on_OVHcloud.html) [ -- PDF version](nutanix_on_OVHcloud.pdf) 
 
+- [Nutanix on OVHcloud - Deployment workflow](nc2onovhdeploymentworkflow.html) [ -- PDF version](nc2onovhdeploymentworkflow.pdf) 
+
 - [Nutanix Cloud Cluster (NC2)](nutanixnc2.html) [ -- PDF version](Nutanix_Cloud_Clusters_(NC2).pdf)
 
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
