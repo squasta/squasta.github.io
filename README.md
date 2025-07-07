@@ -52,6 +52,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Multicloud Snapshot Technology (MST) with Pilot Light Deployment](mstwithpilotlight.html)    [ -- PDF version](drtonc2configurationworkflow.pdf)
 
+- [Multicloud Snapshot Technology (MST) with NC2 on Azure - Deployment workflow](mstonnc2onazuredeploymentworkflow.html)    [ -- PDF version](mstonnc2onazuredeploymentworkflow.pdf)
+
 - [Nutanix Licenses for Nutanix Cloud Clusters (NC2)](nutanixlicencesfornc2.html) [-- PDF version](nutanixlicencesfornc2.pdf)
 
 - [Nutanix Certified Professional - Cloud Integration - AWS - Preparation Guide](certificationnutanixcloudintegrationaws.html) [-- PDF version](certificationnutanixcloudintegrationaws.pdf)
