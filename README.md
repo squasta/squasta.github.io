@@ -15,6 +15,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Nutanix Kubernetes Platform](nutanixkubernetesplatform.html) [-- PDF version](nutanixkubernetesplatform.pdf)
 
+- [Nutanix Prism Central Backup Restore / PCBR](pcbr.html) [-- PDF version](pcbr.pdf)
+
 
 ## Nutanix Hybrid multicloud
 
