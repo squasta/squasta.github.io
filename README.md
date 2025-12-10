@@ -1,9 +1,9 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : September 25th 2025)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : December 10th 2025)
 
 You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud Plaform...
 
-[Contact me on LinkedIn](https://www.linkedin.com/in/stanislasquastana/) 
+[Contact me on LinkedIn](https://www.linkedin.com/in/stanislasquastana/) s
 
 ## Nutanix Cloud Platform
 
@@ -45,6 +45,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 - [Nutanix Cloud Cluster (NC2) on Azure - Deployment workflow](nc2onazuredeploymentworkflow.html) [ -- PDF version](nc2onazuredeploymentworkflow.pdf) 
 
 - [Nutanix Cloud Cluster (NC2) on Azure - User VPC Configuration workflow](configurationvpcazure.html) [ -- PDF version](configurationvpcazure.pdf) 
+
+- [Nutanix Cloud Cluster (NC2) on Google Cloud](nc2ongcp.html)  [ -- PDF version](nc2ongcp.pdf)
 
 - [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
 
