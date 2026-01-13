@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : January 7th 2026)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : January 13th 2026)
 
 You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
 
@@ -49,6 +49,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 - [Nutanix Cloud Cluster (NC2) on Google Cloud](nc2ongcp.html)  [ -- PDF version](nc2ongcp.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on Google Cloud - Deployment workflow](nc2ongcpdeploymentworkflow.html)  [ -- PDF version](nc2ongcpdeploymentworkflow.pdf)
+
+- [Nutanix Cloud Cluster (NC2) on Google Cloud - Cloud Resources](nc2ongcp-cloudresources.html)  [ -- PDF version](nc2ongcp-cloudresources.pdf)
 
 - [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
 
