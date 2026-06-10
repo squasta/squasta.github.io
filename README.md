@@ -1,9 +1,9 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : January 13th 2026)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : June 10th 2026)
 
-You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud...
+You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud, GenAI certifications...
 
-[Contact me on LinkedIn](https://www.linkedin.com/in/stanislasquastana/) s
+[Contact me on LinkedIn](https://www.linkedin.com/in/stanislasquastana/) 
 
 ## Nutanix Cloud Platform
 
@@ -231,7 +231,14 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 ## AWS
 
 - [Amazon Cloud Practitioner / Foundations](aws_foundamentals.html) [ -- PDF version](aws_foundamentals.pdf) 
+
 - [Nutanix Cloud Cluster (NC2) on AWS](nutanix_cloud_clusters_on_aws.html) [ -- PDF version](nutanix_cloud_clusters_on_aws.pdf)
+
+- [Amazon GenAI Practitioner / AWS AI Managed Services](awsaimanagedservices.html) [ -- PDF version](awsaimanagedservices.pdf)
+
+- [Amazon GenAI Practitioner / AWS Sagemaker AI](amazonsagemaker.html) [ -- PDF version](amazonsagemaker.pdf)
+
+- [Amazon GenAI Practitioner / AI Challenges](aichallenges.html) [ -- PDF version](aichallenges.pdf)
 
 
 ## Observability
@@ -242,3 +249,14 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 ## Google Cloud Platform
 
 - [Google Cloud Platform](google_cloud_platform.html)
+
+- [Google Cloud GenAI Leader - AI Overview](genaileader-overview.html) [ -- PDF version](genaileader-overview.pdf)
+
+- [Google Cloud GenAI Leader - Model Optimization](googlecloudgenai-modeloptimization.html) [ -- PDF version](googlecloudgenai-modeloptimization.pdf)
+
+- [Google Cloud GenAI Leader - Implementing Transformation AI Solutions](googlecloudgenaileader-implementingtransformationaisolutions.html) [ -- PDF version](googlecloudgenaileader-implementingtransformationaisolutions.pdf)
+
+- [Google Cloud GenAI Leader - Securing AI](googlecloudgenaileader-securingai.html) [ -- PDF version](googlecloudgenaileader-securingai.pdf)
+
+- [Google Cloud GenAI Leader - Prompt techniques ](googlegenaileader-prompting.html) [ -- PDF version](googlegenaileader-prompting.pdf)
+s
