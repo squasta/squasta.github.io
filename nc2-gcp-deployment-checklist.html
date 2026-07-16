@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NC2 on Google Cloud — Deployment Runbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F8FC;
+    --surface:#FFFFFF;
+    --surface-2:#EEF4FA;
+    --border:#DCE7F2;
+    --border-soft:#E9F1F8;
+    --text:#0B2545;
+    --muted:#5B7089;
+    --muted-2:#93A6B9;
+    --blue:#7855FA;
+    --blue-dark:#003B5C;
+    --blue-tint:#F1ECFE;
+    --blue-dim:#D6C6FB;
+    --green:#17A673;
+    --green-dim:#CDEFE1;
+    --amber:#E08A1E;
+    --amber-tint:#FCF0DE;
+    --red:#D5455C;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 480px at 78% -12%, rgba(120,85,250,0.10), transparent 60%),
+      radial-gradient(800px 420px at -8% 10%, rgba(0,59,92,0.05), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .mono{font-family:'Manrope',sans-serif;}
+  .display{font-family:'Manrope',sans-serif;}
+
+  /* ---------- Header ---------- */
+  header{
+    padding:36px 5vw 22px;
+    border-bottom:1px solid var(--border);
+    position:relative;
+    background:var(--surface);
+  }
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px rgba(120,85,250,0.6);}
+  h1{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:clamp(28px,4vw,42px);
+    margin:10px 0 6px;
+    letter-spacing:-0.01em;
+    color:var(--blue-dark);
+  }
+  .subline{
+    color:var(--muted);
+    font-size:14.5px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  .subline a{color:var(--muted);}
+  .subline a:hover{color:var(--blue);}
+
+  .overall-wrap{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .overall-bar{
+    flex:1 1 320px;
+    min-width:220px;
+    height:10px;
+    background:var(--surface-2);
+    border-radius:99px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    position:relative;
+  }
+  .overall-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,var(--blue-dark),var(--blue));
+    border-radius:99px;
+    transition:width .5s cubic-bezier(.4,0,.2,1);
+  }
+  .overall-pct{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--blue);
+    white-space:nowrap;
+  }
+  .actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--blue-dark);
+    background:var(--surface);
+    border:1.5px solid var(--border);
+    padding:9px 16px;
+    border-radius:99px;
+    cursor:pointer;
+    transition:all .15s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .btn:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px);box-shadow:0 4px 12px rgba(120,85,250,0.15);}
+  .btn.danger:hover{border-color:var(--red);color:var(--red);box-shadow:0 4px 12px rgba(213,69,92,0.15);}
+  #importFile{display:none;}
+
+  /* ---------- Layout ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:210px 1fr;
+    gap:0;
+    max-width:1180px;
+    margin:0 auto;
+    padding:34px 5vw 100px;
+  }
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr;}
+    .rail{display:none;}
+  }
+
+  /* ---------- Pipeline rail ---------- */
+  .rail{
+    position:sticky;
+    top:24px;
+    align-self:start;
+    padding-right:26px;
+  }
+  .rail-line{
+    position:absolute;
+    left:15px;
+    top:8px;
+    bottom:8px;
+    width:2px;
+    background:var(--border);
+  }
+  .rail-fill{
+    position:absolute;
+    left:15px;
+    top:8px;
+    width:2px;
+    background:linear-gradient(180deg,var(--blue),var(--green));
+    transition:height .5s cubic-bezier(.4,0,.2,1);
+  }
+  .rail-node{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:9px 0;
+    cursor:pointer;
+    text-decoration:none;
+  }
+  .rail-dot{
+    width:32px;height:32px;flex:none;
+    border-radius:50%;
+    background:var(--surface);
+    border:2px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Manrope',sans-serif;
+    font-size:12px;font-weight:700;
+    color:var(--muted-2);
+    position:relative;z-index:1;
+    transition:all .2s ease;
+    box-shadow:0 1px 2px rgba(11,37,69,0.06);
+  }
+  .rail-node.done .rail-dot{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .rail-node.partial .rail-dot{border-color:var(--blue);color:var(--blue);}
+  .rail-node:hover .rail-dot{border-color:var(--blue);}
+  .rail-label{
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.25;
+    transition:color .2s ease;
+  }
+  .rail-node.done .rail-label{color:var(--text);}
+  .rail-node:hover .rail-label{color:var(--text);}
+
+  /* ---------- Stage cards ---------- */
+  .stages{display:flex;flex-direction:column;gap:16px;}
+  .stage{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    scroll-margin-top:20px;
+    overflow:hidden;
+    box-shadow:0 1px 2px rgba(11,37,69,0.03), 0 10px 24px rgba(11,37,69,0.045);
+  }
+  .stage-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .stage-num{
+    font-family:'Manrope',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:var(--blue-dark);
+    background:var(--blue-tint);
+    border:1px solid var(--blue-dim);
+    border-radius:7px;
+    padding:4px 8px;
+    flex:none;
+  }
+  .stage-title{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:16.5px;
+    flex:1;
+    color:var(--blue-dark);
+  }
+  .stage-title .stage-sub{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    font-size:13px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .stage-badge{
+    font-family:'Manrope',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    color:var(--muted);
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    padding:4px 9px;
+    border-radius:99px;
+    flex:none;
+    min-width:44px;
+    text-align:center;
+  }
+  .stage.complete .stage-badge{color:var(--green);border-color:var(--green-dim);background:var(--green-dim);}
+  .chev{
+    flex:none;
+    color:var(--muted-2);
+    transition:transform .2s ease;
+    font-size:12px;
+  }
+  .stage.open .chev{transform:rotate(90deg);}
+
+  .stage-body{
+    display:none;
+    padding:0 18px 18px 18px;
+    border-top:1px solid var(--border-soft);
+  }
+  .stage.open .stage-body{display:block;}
+
+  .note{
+    display:flex;
+    gap:10px;
+    padding:11px 13px;
+    border-radius:9px;
+    font-size:13px;
+    line-height:1.55;
+    margin:14px 0 4px;
+    background:var(--blue-tint);
+    border:1px solid var(--border-soft);
+    border-left:3px solid var(--blue);
+    color:var(--blue-dark);
+    white-space:pre-line;
+  }
+  .note.warn{border-left-color:var(--amber);background:var(--amber-tint);}
+  .note b, .note strong{color:var(--text);}
+
+  .items{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;}
+  .item{
+    border-top:1px solid var(--border-soft);
+  }
+  .item:first-child{border-top:none;}
+  .item-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:11px 0;
+    cursor:pointer;
+  }
+  .cb{
+    flex:none;
+    width:20px;height:20px;
+    margin-top:1px;
+    border-radius:6px;
+    border:1.5px solid var(--border);
+    background:var(--surface);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .15s ease;
+  }
+  .cb svg{width:12px;height:12px;opacity:0;transition:opacity .1s ease;stroke:#fff;}
+  .item.checked .cb{background:var(--blue);border-color:var(--blue);}
+  .item.checked .cb svg{opacity:1;}
+  .item-label{
+    font-size:14.5px;
+    line-height:1.4;
+    padding-top:1px;
+  }
+  .item.checked .item-label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--border);}
+  .item-tag{
+    font-family:'Manrope',sans-serif;
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--muted);
+    border:1px solid var(--border);
+    background:var(--surface-2);
+    padding:1px 6px;
+    border-radius:5px;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+  .item .note{margin-left:32px;margin-top:2px;margin-bottom:10px;}
+  .item-children{margin-left:32px;display:flex;flex-direction:column;list-style:none;padding:0;}
+
+  footer{
+    text-align:center;
+    color:var(--muted-2);
+    font-size:12.5px;
+    padding:10px 5vw 40px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow"><span class="dot"></span>RUNBOOK · INTERACTIVE CHECKLIST</div>
+  <h1>NC2 on Google Cloud — Deployment Workflow</h1>
+  <div class="subline">
+    <span>Source: <a href="https://squasta.github.io/nc2ongcpdeploymentworkflow.html" target="_blank">squasta.github.io</a></span>
+    <span>Mind map updated on July 16, 2026</span>
+  </div>
+  <div class="overall-wrap">
+    <div class="overall-bar"><div class="overall-fill" id="overallFill"></div></div>
+    <div class="overall-pct" id="overallPct">0 / 0</div>
+    <div class="actions">
+      <button class="btn" id="expandAllBtn">Expand all</button>
+      <button class="btn" id="exportBtn">⬇ Export progress</button>
+      <button class="btn" id="importBtn">⬆ Import</button>
+      <input type="file" id="importFile" accept="application/json">
+      <button class="btn danger" id="resetBtn">Reset</button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="rail" id="rail">
+    <div class="rail-line"></div>
+    <div class="rail-fill" id="railFill"></div>
+  </nav>
+  <main class="stages" id="stages"></main>
+</div>
+
+<footer>Progress isn't saved automatically (no storage between sessions) — use "Export" to keep a backup, then "Import" to reload it later.</footer>
+
+<script>
+const DATA = [
+  {
+    id:"s1", title:"Setting up My Nutanix Account", sub:"and activating NC2",
+    note:"A My Nutanix account allows you to subscribe to, access, and manage NC2.",
+    items:[
+      {id:"1.1", label:"Create a new shared workspace with the Account Admin Role",
+        note:"The shared workspace should be used when deploying the NC2 console, reserving license capacity for NC2, or activating the NC2 PAYG subscription. You can also join a shared workspace you have been invited to."},
+      {id:"1.2", label:"Activate PAYG Subscription", tag:"💲"},
+      {id:"1.3", label:"Configure License Capacity Reservation"}
+    ]
+  },
+  {
+    id:"s2", title:"Setting up Google Cloud account, Project and resources",
+    note:"A GC user that can access the GC console and can create IAM Service Accounts and Custom Roles.\nPreparing SSH Key Pairs.",
+    items:[
+      {id:"2.1", label:"Enable Compute Engine API, IAM API and Quotas API on your Google Cloud Project",
+        note:"You can also use the default Compute Engine Service Account."},
+      {id:"2.2", label:"(Optional) Create a Service Account for Compute Engine API (NC2 nodes)"},
+      {id:"2.3", label:"Create a custom IAM role for NC2 Nodes",
+        note:"Assigned to the Compute Engine service account created in step 2.2."},
+      {id:"2.4", label:"Create a Service Account for the NC2 portal"},
+      {id:"2.5", label:"Create a custom IAM role for the NC2 Console",
+        note:"Assigned to the NC2 portal service account created in step 2.4."},
+      {id:"2.6", label:"Generate a Service Account key (JSON)", tag:"🔑",
+        note:"For the NC2 portal service account created in step 2.4."},
+      {id:"2.7", label:"Ensure IP forwarding is allowed at organisation-level in the Google Project"},
+      {id:"2.8", label:"Ensure the Google Project has enough quotas", isGroup:true,
+        children:[
+          {id:"2.8.1", label:"Enable Quotas API", tag:"⚠️"}
+        ]
+      },
+      {id:"2.9", label:"Check vCPUs and Local SSD (LSSD) quotas"},
+      {id:"2.10", label:"Check Backend Services quota"}
+    ]
+  },
+  {
+    id:"s3", title:"Setting Up the networking Infra in Google Cloud",
+    note:"Networking requirements:\n- Connectivity between your on-prem datacenter and Google. Both Cloud Interconnect and VPN S2S are supported.\n- IP ranges (CIDR) for the GC subnet used by NC2 on GC.",
+    items:[
+      {id:"3.1", label:"3.1 — Manual workflow", isGroup:true, note:"The NC2 portal can also create the new VPC, Subnets, etc. itself.",
+        children:[
+          {id:"3.1.1", label:"Create a Google Cloud VPC",
+            note:"CIDR min /24. MTU >= 2000 bytes.\nNC2 does not support the use of the following IP addresses / CIDR: 192.168.5.0/24, 10.100.0.0/16, 10.200.32.0/24, 10.200.0.0/22 and 100.64.1.0/24", noteType:"warn"},
+          {id:"3.1.2", label:"Create the required cluster subnets",
+            note:"A cluster management subnet · A no-NAT subnet · Primary IP range for nodes and pods · Primary IP range for NoNAT UVM (OEN No-NAT) · Secondary IP range for NAT subnet range (UVM)."},
+          {id:"3.1.3", label:"Create a Google NAT Gateway", note:"With a Google Cloud Router."},
+          {id:"3.1.4", label:"Configure Firewall rules",
+            note:"Allow outbound internet access on your Google Cloud VPC for AHV, CVM & PC (to connect to the NC2 portal / APIs)."},
+          {id:"3.1.5", label:"Configure route tables and routing"}
+        ]
+      },
+      {id:"3.2", label:"3.2 — Interconnection", isGroup:true,
+        children:[
+          {id:"3.2.1", label:"VPN Site to Site"},
+          {id:"3.2.2", label:"Cloud VPN Gateway"},
+          {id:"3.2.3", label:"Cloud Interconnect"}
+        ]
+      },
+      {id:"3.3", label:"3.3 — DNS resolution", isGroup:true,
+        note:"If the NC2 deployment creates the Google VPC, then provide a DNS Server IP address in the wizard.",
+        children:[
+          {id:"3.3.1", label:"Configure the DNS Server IP in the deployment wizard",
+            note:"169.254.269.254 can be used by NC2 nodes. PC VMs cannot use 169.254.169.254. Or any DNS Servers configured using a Cloud DNS Policy."}
+        ]
+      },
+      {id:"3.4", label:"3.4 — Authorise outbound access on your firewall / proxy (optional)", tag:"🔶",
+        note:"For the Microservices Infrastructure (Flow Network) · For Nutanix Disaster Recovery · For L2 Subnet extension."},
+      {id:"3.5", label:"3.5 — Deploy a Jumpbox GCE VM", note:"Optional but useful to access the Prism Central GUI."}
+    ]
+  },
+  {
+    id:"s4", title:"Setting up the NC2 console", sub:"add your Google Cloud Project as a Cloud Account", tag:"☁️",
+    items:[
+      {id:"4.1", label:"Provide the Service Account email", note:"Use the Service Account created in step 2.2."},
+      {id:"4.2", label:"Provide the Service Account Key (JSON)", note:"Created in step 2.6."}
+    ]
+  },
+  {
+    id:"s5", title:"Creating a Nutanix Cluster",
+    items:[
+      {id:"5.1", label:"Check supported Google Cloud regions and instances", tag:"🌍"},
+      {id:"5.2", label:"Follow the deployment stages"}
+    ]
+  },
+  {
+    id:"s6", title:"Configure Google Cloud Network Infrastructure",
+    items:[
+      {id:"6.1", label:"Configure access to Prism Central with RDP on the Jumpbox"},
+      {id:"6.2", label:"Configure Google VPC Peering connectivity with on-premises",
+        note:"Via VPN S2S / Interconnect."}
+    ]
+  },
+  {
+    id:"s7", title:"Configure Networking for UVM",
+    items:[
+      {id:"7.1", label:"Configure Flow Virtual Networking", isGroup:true,
+        note:"Prism Central is mandatory for Flow Networking. Use rfc6598 for the CIDR in the external-subnet-nonat in the transit VPC.",
+        children:[
+          {id:"7.1.1", label:"Configure User VMs with NAT"},
+          {id:"7.1.2", label:"Configure User VMs with No-NAT"},
+          {id:"7.1.3", label:"Configure Microsegmentation (FNS NG)"}
+        ]
+      }
+    ]
+  },
+  {
+    id:"s8", title:"Performing additional configuration after the cluster creation",
+    note:"Data Protection, Day 2 operations.",
+    items:[
+      {id:"8.1", label:"Log into the cluster using SSH"},
+      {id:"8.2", label:"Configure Data at Rest encryption"},
+      {id:"8.3", label:"Configure Nutanix Disaster Recovery"},
+      {id:"8.4", label:"Manage the cluster through the NC2 portal", isGroup:true,
+        children:[
+          {id:"8.4.1", label:"Update cluster capacity"},
+          {id:"8.4.2", label:"Terminate a cluster"}
+        ]
+      }
+    ]
+  }
+];
+
+// ---- state (in-memory only, no localStorage) ----
+let checked = {};
+
+function allLeafIds(){
+  const ids = [];
+  DATA.forEach(stage=>{
+    stage.items.forEach(it=>{
+      if(it.children){ it.children.forEach(c=>ids.push(c.id)); }
+      else { ids.push(it.id); }
+    });
+  });
+  return ids;
+}
+
+function noteHTML(text, warn){
+  if(!text) return "";
+  return `<div class="note${warn?' warn':''}">${escapeHTML(text)}</div>`;
+}
+function escapeHTML(s){
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function renderItem(it){
+  const isChecked = checked[it.id] ? "checked" : "";
+  const tag = it.tag ? `<span class="item-tag">${it.tag}</span>` : "";
+  let childrenHTML = "";
+  if(it.children){
+    childrenHTML = `<ul class="item-children">${it.children.map(renderItem).join("")}</ul>`;
+  }
+  return `
+    <li class="item ${isChecked}" data-id="${it.id}">
+      <div class="item-row" onclick="toggleItem('${it.id}')">
+        <span class="cb"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span class="item-label">${escapeHTML(it.label)}${tag}</span>
+      </div>
+      ${noteHTML(it.note, it.noteType==="warn")}
+      ${childrenHTML}
+    </li>`;
+}
+
+function stageProgress(stage){
+  let total=0, done=0;
+  stage.items.forEach(it=>{
+    if(it.children){
+      it.children.forEach(c=>{ total++; if(checked[c.id]) done++; });
+    } else {
+      total++; if(checked[it.id]) done++;
+    }
+  });
+  return {total, done};
+}
+
+function renderStages(){
+  const container = document.getElementById("stages");
+  container.innerHTML = DATA.map((stage,idx)=>{
+    const {total, done} = stageProgress(stage);
+    const complete = total>0 && done===total;
+    return `
+    <section class="stage" id="${stage.id}" data-id="${stage.id}">
+      <div class="stage-head" onclick="toggleStage('${stage.id}')">
+        <span class="stage-num mono">${String(parseInt(stage.id.slice(1),10)).padStart(2,'0')}</span>
+        <span class="stage-title">${escapeHTML(stage.title)}${stage.tag?` <span>${stage.tag}</span>`:""}${stage.sub?`<span class="stage-sub">${escapeHTML(stage.sub)}</span>`:""}</span>
+        <span class="stage-badge">${done}/${total}</span>
+        <span class="chev">▶</span>
+      </div>
+      <div class="stage-body">
+        ${noteHTML(stage.note)}
+        <ul class="items">${stage.items.map(renderItem).join("")}</ul>
+      </div>
+    </section>`;
+  }).join("");
+
+  DATA.forEach(stage=>{
+    const {total, done} = stageProgress(stage);
+    document.getElementById(stage.id).classList.toggle("complete", total>0 && done===total);
+  });
+}
+
+function renderRail(){
+  const rail = document.getElementById("rail");
+  const existing = rail.querySelectorAll(".rail-node");
+  existing.forEach(n=>n.remove());
+  DATA.forEach((stage,idx)=>{
+    const {total, done} = stageProgress(stage);
+    const state = done===0 ? "" : (done===total ? "done" : "partial");
+    const a = document.createElement("a");
+    a.className = `rail-node ${state}`;
+    a.href = `#${stage.id}`;
+    a.innerHTML = `<span class="rail-dot mono">${done===total && total>0 ? "✓" : parseInt(stage.id.slice(1),10)}</span><span class="rail-label">${escapeHTML(stage.title)}</span>`;
+    rail.appendChild(a);
+  });
+  const total = rail.querySelectorAll(".rail-node").length;
+  const doneCount = rail.querySelectorAll(".rail-node.done").length;
+  const railHeight = rail.querySelector(".rail-line").offsetHeight;
+  document.getElementById("railFill").style.height = total>0 ? (railHeight*(doneCount/total))+"px" : "0px";
+}
+
+function updateOverall(){
+  const ids = allLeafIds();
+  const doneCount = ids.filter(id=>checked[id]).length;
+  const pct = ids.length ? Math.round(100*doneCount/ids.length) : 0;
+  document.getElementById("overallFill").style.width = pct+"%";
+  document.getElementById("overallPct").textContent = `${doneCount} / ${ids.length}`;
+}
+
+function refreshAll(){
+  renderStages();
+  renderRail();
+  updateOverall();
+  // re-attach open state
+  document.querySelectorAll(".stage").forEach(s=>{
+    if(openStages.has(s.dataset.id)) s.classList.add("open");
+  });
+}
+
+const openStages = new Set();
+
+function toggleItem(id){
+  checked[id] = !checked[id];
+  refreshAll();
+}
+
+function toggleStage(id){
+  if(openStages.has(id)) openStages.delete(id); else openStages.add(id);
+  document.getElementById(id).classList.toggle("open");
+}
+
+document.getElementById("expandAllBtn").addEventListener("click", ()=>{
+  const allOpen = DATA.every(s=>openStages.has(s.id));
+  DATA.forEach(s=>{
+    if(allOpen) openStages.delete(s.id); else openStages.add(s.id);
+  });
+  document.getElementById("expandAllBtn").textContent = allOpen ? "Expand all" : "Collapse all";
+  refreshAll();
+});
+
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(confirm("Reset all progress?")){
+    checked = {};
+    refreshAll();
+  }
+});
+
+document.getElementById("exportBtn").addEventListener("click", ()=>{
+  const blob = new Blob([JSON.stringify({checked, exportedAt:new Date().toISOString()}, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "nc2-gcp-progress.json";
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById("importBtn").addEventListener("click", ()=>{
+  document.getElementById("importFile").click();
+});
+document.getElementById("importFile").addEventListener("change", (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev)=>{
+    try{
+      const data = JSON.parse(ev.target.result);
+      checked = data.checked || {};
+      refreshAll();
+    }catch(err){
+      alert("Invalid file.");
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+});
+
+refreshAll();
+</script>
+</body>
+</html>

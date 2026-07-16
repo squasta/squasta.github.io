@@ -54,6 +54,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Nutanix Cloud Cluster (NC2) on Google Cloud - Deployment workflow](nc2ongcpdeploymentworkflow.html)  [ -- PDF version](nc2ongcpdeploymentworkflow.pdf)
 
+- [Nutanix Cloud Cluster (NC2) on Google Cloud - Deployment Checklist](nc2-gcp-deployment-checklist.html)
+
 - [Nutanix Cloud Cluster (NC2) on Google Cloud - Cloud Resources](nc2ongcp-cloudresources.html)  [ -- PDF version](nc2ongcp-cloudresources.pdf)
 
 - [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
