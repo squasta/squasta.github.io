@@ -259,4 +259,3 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 - [Google Cloud GenAI Leader - Securing AI](googlecloudgenaileader-securingai.html) [ -- PDF version](googlecloudgenaileader-securingai.pdf)
 
 - [Google Cloud GenAI Leader - Prompt techniques ](googlegenaileader-prompting.html) [ -- PDF version](googlegenaileader-prompting.pdf)
-s
