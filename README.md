@@ -34,6 +34,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Nutanix Cloud Cluster (NC2) on AWS - Deployment workflow](nc2onawsdeploymentworkflow.html) [ -- PDF version](nc2onawsdeploymentworkflow.pdf)
 
+- [Nutanix Cloud Cluster (NC2) on AWS - Deployment Checklist](nc2-aws-deployment-checklist)
+
 - [Nutanix Cloud Cluster (NC2) on AWS - Networking in detail](nc2onaws-networking.html) [ -- PDF version](nc2onaws-networking.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on AWS - Flow VPC Configuration workflow](configurationvpcaws.html)  [ -- PDF version](configurationvpcaws.pdf)
