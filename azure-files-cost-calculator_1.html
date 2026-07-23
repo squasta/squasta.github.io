@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure Files Cost Calculator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+  :root{
+    --bg: #0e1520;
+    --panel: #161f2c;
+    --panel-2: #1c2735;
+    --border: #263344;
+    --border-soft: #1e293a;
+    --text: #e7edf5;
+    --muted: #8ba0b6;
+    --muted-2: #5f7488;
+    --accent: #4da3ff;
+    --accent-dim: #2c5d8f;
+    --good: #34d399;
+    --warn: #f2b84b;
+    --warn-bg: #2b2412;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --disp: 'Space Grotesk', sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: radial-gradient(1200px 800px at 10% -10%, #142033 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 28px 20px 80px;
+  }
+
+  .wrap{ max-width: 1180px; margin: 0 auto; }
+
+  /* Header */
+  header{ margin-bottom: 22px; }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{
+    content:''; width:7px; height:7px; border-radius:50%;
+    background: var(--accent); box-shadow: 0 0 0 3px rgba(77,163,255,0.15);
+  }
+  h1{
+    font-family: var(--disp);
+    font-size: 30px;
+    font-weight: 700;
+    margin: 8px 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .sub{ color: var(--muted); font-size: 14.5px; max-width: 720px; line-height: 1.5; }
+
+  /* Notice banner */
+  .notice{
+    margin-top: 16px;
+    background: var(--warn-bg);
+    border: 1px solid #4a3a17;
+    border-left: 3px solid var(--warn);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #e8d3a0;
+    line-height: 1.55;
+  }
+  .notice b{ color: var(--warn); }
+  .notice a{ color: var(--warn); }
+
+  /* Layout */
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+    margin-top: 26px;
+    align-items: start;
+  }
+  @media (max-width: 940px){
+    .grid{ grid-template-columns: 1fr; }
+    .summary{ position: static !important; }
+  }
+
+  /* Section cards */
+  .section{
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .section-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 15px 18px;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+  }
+  .section-head:hover{ background: rgba(255,255,255,0.02); }
+  .section-title{
+    display:flex; align-items:baseline; gap: 10px;
+  }
+  .tag{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted-2);
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    border-radius: 5px;
+    letter-spacing: 0.04em;
+  }
+  .section-title h2{
+    font-family: var(--disp);
+    font-size: 15.5px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .section-title .desc{
+    color: var(--muted); font-size: 12.5px;
+  }
+  .section-sub{
+    color: var(--muted-2);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .chev{
+    color: var(--muted-2);
+    font-size: 13px;
+    transition: transform 0.18s ease;
+    flex-shrink: 0;
+  }
+  .section.open .chev{ transform: rotate(90deg); color: var(--accent); }
+
+  .section-body{
+    display: none;
+    padding: 4px 18px 20px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .section.open .section-body{ display: block; }
+
+  .field-row{
+    display: grid;
+    grid-template-columns: 1fr 130px 110px 120px;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+  .field-row:last-child{ border-bottom: none; }
+  .field-row .label{
+    font-size: 13.5px; color: var(--text);
+  }
+  .field-row .label .hint{
+    display:block; font-size: 11.5px; color: var(--muted-2); margin-top: 2px;
+  }
+  .field-row label.mini{
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted-2); display:block; margin-bottom: 4px;
+  }
+
+  input[type=number]{
+    width: 100%;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13.5px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  input[type=number]:focus{ border-color: var(--accent); }
+  input[type=number].rate{ color: var(--good); }
+  input[type=number].rate:focus{ color: var(--text); }
+
+  .line-total{
+    font-family: var(--mono);
+    font-size: 13.5px;
+    text-align: right;
+    color: var(--good);
+    white-space: nowrap;
+  }
+
+  .field-header-row{
+    display: grid;
+    grid-template-columns: 1fr 130px 110px 120px;
+    gap: 12px;
+    padding: 10px 0 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted-2);
+  }
+  .field-header-row span:nth-child(2), .field-header-row span:nth-child(3), .field-header-row span:nth-child(4){
+    text-align: right;
+  }
+
+  .section-note{
+    font-size: 11.5px;
+    color: var(--muted-2);
+    margin-top: 10px;
+    line-height: 1.5;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 6px;
+  }
+
+  /* Summary panel */
+  .summary{
+    position: sticky;
+    top: 20px;
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .summary h3{
+    font-family: var(--disp);
+    font-size: 14px;
+    margin: 0 0 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .grand-total{
+    font-family: var(--mono);
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 6px 0 2px;
+    letter-spacing: -0.01em;
+  }
+  .grand-total span{ font-size: 15px; color: var(--muted); font-weight: 400; }
+  .grand-sub{ font-size: 12px; color: var(--muted-2); margin-bottom: 18px; }
+
+  .bar-row{ margin-bottom: 11px; }
+  .bar-label{
+    display:flex; justify-content: space-between;
+    font-size: 12px; margin-bottom: 5px;
+    color: var(--muted);
+  }
+  .bar-label b{ color: var(--text); font-family: var(--mono); font-weight: 500; }
+  .bar-track{
+    height: 7px; border-radius: 4px; background: var(--border-soft); overflow: hidden;
+  }
+  .bar-fill{
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+    transition: width 0.25s ease;
+  }
+
+  .divider{ height:1px; background: var(--border-soft); margin: 18px 0; }
+
+  .storage-summary{
+    font-size: 12px; color: var(--muted);
+    display:flex; justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+  .storage-summary:last-child{ border-bottom: none; }
+  .storage-summary b{ color: var(--text); font-family: var(--mono); font-weight: 500; }
+
+  .reset-btn{
+    width: 100%;
+    margin-top: 18px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 12.5px;
+    padding: 9px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .reset-btn:hover{ border-color: var(--warn); color: var(--warn); }
+
+  footer{
+    max-width: 1180px; margin: 30px auto 0;
+    color: var(--muted-2); font-size: 11.5px; text-align:center;
+    line-height: 1.6;
+  }
+  footer a{ color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Azure FinOps · Storage</div>
+    <h1>Azure Files Cost Calculator</h1>
+    <div class="sub">Estimate monthly Azure Files spend across Provisioned v2, Provisioned v1 (PAYG &amp; reserved), and pay-as-you-go billing models. Enter your volumes per tier below.</div>
+    <div class="notice">
+      <b>Rates now reflect real Azure retail prices — Germany West Central, LRS redundancy, USD</b> — pulled from the Azure Retail Prices API (<code>prices.azure.com</code>) on 2026‑07‑22. Storage rates are converted to a consistent $/GiB/month basis (provisioned v2 meters are hourly ×730; reservation meters are quoted as total term cost, divided by term length and reservation block size). All rates stay fully editable if you're on a different region, redundancy (ZRS/GRS/GZRS), or currency — just overwrite the values below. Once you update a rate field, every total recalculates instantly.
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- LEFT: sections -->
+    <div class="sections" id="sections"></div>
+
+    <!-- RIGHT: summary -->
+    <div class="summary">
+      <h3>Estimated monthly cost</h3>
+      <div class="grand-total" id="grandTotal">$0.00<span> / mo</span></div>
+      <div class="grand-sub" id="grandSub">across 0 GiB provisioned/stored</div>
+
+      <div id="barChart"></div>
+
+      <div class="divider"></div>
+      <div id="storageBreakdown"></div>
+
+      <button class="reset-btn" id="resetBtn">Reset all fields to defaults</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Storage-only calculator (used/provisioned storage meters). IOPS, throughput, transactions, snapshots, soft-delete, and data transfer meters are not included.<br>
+  Built for quick directional estimates — always confirm final figures against the official Azure Pricing Calculator before budgeting.
+</footer>
+
+<script>
+// ---- Data model: each field = {id, label, hint, defaultRate, unit: '$/GiB/mo'} ----
+const SECTIONS = [
+  {
+    id: 'pv2',
+    tag: 'MODEL 1',
+    title: 'Provisioned v2 — Pay-As-You-Go',
+    desc: 'Recommended for new deployments',
+    note: 'Provisioned v2 lets you separately provision storage, IOPS and throughput. This calculator covers the provisioned storage meter only.',
+    fields: [
+      { id: 'pv2_ssd', label: 'SSD provisioned storage', hint: 'Premium file shares', rate: 0.14308 },
+      { id: 'pv2_hdd', label: 'HDD provisioned storage', hint: 'Standard file shares', rate: 0.00949 },
+    ]
+  },
+  {
+    id: 'pv1',
+    tag: 'MODEL 2',
+    title: 'Provisioned v1 — Pay-As-You-Go',
+    desc: 'SSD only',
+    note: 'Provisioned v1 is SSD-only; IOPS/throughput scale automatically with provisioned storage.',
+    fields: [
+      { id: 'pv1_ssd', label: 'SSD provisioned storage', hint: 'PAYG rate', rate: 0.192 },
+    ]
+  },
+  {
+    id: 'pv1_r1',
+    tag: 'MODEL 3',
+    title: 'Provisioned v1 — 1-Year Reservation',
+    desc: 'SSD only',
+    note: 'Reservations are purchased in 10 TiB / 100 TiB increments; this tool applies your blended $/GiB rate to any volume for estimation purposes.',
+    fields: [
+      { id: 'pv1r1_ssd', label: 'SSD provisioned storage', hint: '1-year commitment', rate: 0.157438 },
+    ]
+  },
+  {
+    id: 'pv1_r3',
+    tag: 'MODEL 4',
+    title: 'Provisioned v1 — 3-Year Reservation',
+    desc: 'SSD only',
+    note: 'Reservations are purchased in 10 TiB / 100 TiB increments; this tool applies your blended $/GiB rate to any volume for estimation purposes.',
+    fields: [
+      { id: 'pv1r3_ssd', label: 'SSD provisioned storage', hint: '3-year commitment', rate: 0.12672 },
+    ]
+  },
+  {
+    id: 'payg',
+    tag: 'MODEL 5',
+    title: 'Pay-As-You-Go — HDD (Azure Files Standard)',
+    desc: 'Transaction optimized · Hot · Cool',
+    note: 'PAYG is HDD-only, with three access tiers trading off storage price vs. transaction price. Transaction optimized has the highest storage cost but cheapest transactions; Cool has the cheapest storage but priciest transactions.',
+    fields: [
+      { id: 'payg_txopt', label: 'Transaction optimized', hint: 'Used storage', rate: 0.0577 },
+      { id: 'payg_hot', label: 'Hot', hint: 'Used storage', rate: 0.0271 },
+      { id: 'payg_cool', label: 'Cool', hint: 'Used storage', rate: 0.015 },
+    ]
+  },
+  {
+    id: 'payg_r1',
+    tag: 'MODEL 6',
+    title: 'Pay-As-You-Go — 1-Year Reservation',
+    desc: 'Hot · Cool (reservations not available on Transaction optimized)',
+    note: 'Reservations apply only to Hot and Cool used-storage; transaction charges are billed separately at standard PAYG rates.',
+    fields: [
+      { id: 'paygr1_hot', label: 'Hot', hint: '1-year commitment', rate: 0.022225 },
+      { id: 'paygr1_cool', label: 'Cool', hint: '1-year commitment', rate: 0.012297 },
+    ]
+  },
+  {
+    id: 'payg_r3',
+    tag: 'MODEL 7',
+    title: 'Pay-As-You-Go — 3-Year Reservation',
+    desc: 'Hot · Cool (reservations not available on Transaction optimized)',
+    note: 'Reservations apply only to Hot and Cool used-storage; transaction charges are billed separately at standard PAYG rates.',
+    fields: [
+      { id: 'paygr3_hot', label: 'Hot', hint: '3-year commitment', rate: 0.017885 },
+      { id: 'paygr3_cool', label: 'Cool', hint: '3-year commitment', rate: 0.009901 },
+    ]
+  },
+];
+
+const GIB_PER_TIB = 1024;
+const state = {}; // id -> {tib, rate}
+SECTIONS.forEach(s => s.fields.forEach(f => { state[f.id] = { tib: 0, rate: f.rate }; }));
+
+const fmt = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const fmtTib = n => n.toLocaleString('en-US', {maximumFractionDigits: 2}) + ' TiB';
+
+function buildSections(){
+  const root = document.getElementById('sections');
+  root.innerHTML = '';
+  SECTIONS.forEach((s, idx) => {
+    const sec = document.createElement('div');
+    sec.className = 'section' + (idx === 0 ? ' open' : '');
+    sec.id = 'sec-' + s.id;
+
+    const head = document.createElement('div');
+    head.className = 'section-head';
+    head.innerHTML = `
+      <div class="section-title">
+        <span class="tag">${s.tag}</span>
+        <div>
+          <h2>${s.title}</h2>
+          <div class="section-sub">${s.desc}</div>
+        </div>
+      </div>
+      <div class="chev">&#9656;</div>
+    `;
+    head.addEventListener('click', () => {
+      sec.classList.toggle('open');
+    });
+
+    const body = document.createElement('div');
+    body.className = 'section-body';
+
+    const headerRow = document.createElement('div');
+    headerRow.className = 'field-header-row';
+    headerRow.innerHTML = `<span>Tier</span><span>Volume (TiB)</span><span>$ / GiB / mo</span><span>Monthly cost</span>`;
+    body.appendChild(headerRow);
+
+    s.fields.forEach(f => {
+      const row = document.createElement('div');
+      row.className = 'field-row';
+      row.innerHTML = `
+        <div class="label">${f.label}<span class="hint">${f.hint}</span></div>
+        <div>
+          <input type="number" min="0" step="0.1" value="0" data-role="tib" data-id="${f.id}" placeholder="0">
+        </div>
+        <div>
+          <input type="number" min="0" step="0.001" value="${f.rate}" class="rate" data-role="rate" data-id="${f.id}" placeholder="0.00">
+        </div>
+        <div class="line-total" data-total="${f.id}">$0.00</div>
+      `;
+      body.appendChild(row);
+    });
+
+    const note = document.createElement('div');
+    note.className = 'section-note';
+    note.textContent = s.note;
+    body.appendChild(note);
+
+    sec.appendChild(head);
+    sec.appendChild(body);
+    root.appendChild(sec);
+  });
+
+  root.querySelectorAll('input[data-role]').forEach(inp => {
+    inp.addEventListener('input', onInputChange);
+  });
+}
+
+function onInputChange(e){
+  const id = e.target.dataset.id;
+  const role = e.target.dataset.role;
+  const val = parseFloat(e.target.value);
+  if (role === 'tib') state[id].tib = isNaN(val) ? 0 : val;
+  if (role === 'rate') state[id].rate = isNaN(val) ? 0 : val;
+  recalc();
+}
+
+function recalc(){
+  let grandTotal = 0;
+  let totalTib = 0;
+  const modelTotals = SECTIONS.map(s => {
+    let sum = 0;
+    s.fields.forEach(f => {
+      const gib = state[f.id].tib * GIB_PER_TIB;
+      const line = gib * state[f.id].rate;
+      sum += line;
+      totalTib += state[f.id].tib;
+      const el = document.querySelector(`[data-total="${f.id}"]`);
+      if (el) el.textContent = fmt(line);
+    });
+    grandTotal += sum;
+    return { title: s.title, sum };
+  });
+
+  document.getElementById('grandTotal').innerHTML = fmt(grandTotal) + '<span> / mo</span>';
+  document.getElementById('grandSub').textContent = `across ${fmtTib(totalTib)} provisioned/stored`;
+
+  // Bar chart — only show models with volume > 0, else show all with 0 width
+  const barRoot = document.getElementById('barChart');
+  barRoot.innerHTML = '';
+  const maxVal = Math.max(...modelTotals.map(m => m.sum), 0.0001);
+  modelTotals.forEach(m => {
+    if (m.sum === 0) return;
+    const pct = (m.sum / maxVal) * 100;
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.innerHTML = `
+      <div class="bar-label"><span>${m.title}</span><b>${fmt(m.sum)}</b></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+    `;
+    barRoot.appendChild(row);
+  });
+  if (grandTotal === 0){
+    barRoot.innerHTML = '<div style="font-size:12px;color:var(--muted-2);padding:6px 0;">Enter volumes above to see the cost breakdown.</div>';
+  }
+
+  // Storage breakdown by tier group
+  const breakdown = document.getElementById('storageBreakdown');
+  breakdown.innerHTML = '';
+  SECTIONS.forEach(s => {
+    const tib = s.fields.reduce((a, f) => a + state[f.id].tib, 0);
+    if (tib === 0) return;
+    const row = document.createElement('div');
+    row.className = 'storage-summary';
+    row.innerHTML = `<span>${s.title}</span><b>${fmtTib(tib)}</b>`;
+    breakdown.appendChild(row);
+  });
+}
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  buildSections();
+  recalc();
+});
+
+buildSections();
+recalc();
+</script>
+</body>
+</html>
