@@ -58,6 +58,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Nutanix Cloud Cluster (NC2) on Google Cloud - Cloud Resources](nc2ongcp-cloudresources.html)  [ -- PDF version](nc2ongcp-cloudresources.pdf)
 
+- [Nutanix Cloud Cluster (NC2) on Google Cloud - Type of metal instances](nc2ongcp-typesofnodes.html)  [ -- PDF version](nc2ongcp-typesofnodes.pdf)
+
 - [Nutanix Cloud Cluster Portal](nc2portal.html)  [ -- PDF version](nc2portal.pdf)
 
 - [Nutanix Cloud Cluster (NC2) and Disaster Recovery](nc2anddisasterrecovery.html)  [ -- PDF version](nc2anddisasterrecovery.pdf)
