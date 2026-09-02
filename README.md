@@ -30,7 +30,9 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 
 - [Nutanix Cloud Cluster (NC2) on AWS - Cloud Resources](nc2onaws-cloudresources.html) [ -- PDF version](nc2onaws-cloudresources.pdf)
 
-- [Nutanix Cloud Cluster (NC2) on AWS - Type of metal instances](nc2onaws-typeofnodes.html) [ -- PDF version](nc2onaws-typeofnodes.pdf)
+- [Nutanix Cloud Cluster (NC2) on AWS - Types of EC2 metal instances](nc2onaws-typeofnodes.html) [ -- PDF version](nc2onaws-typeofnodes.pdf)
+
+- [Nutanix Cloud Cluster (NC2) on AWS - New Types of EC2 metal instances (AOS 7.5.1 and more)](nc2onaws-typeofnodes751andmore.html) [ -- PDF version](nc2onaws-typeofnodes751andmore.pdf)
 
 - [Nutanix Cloud Cluster (NC2) on AWS - Deployment workflow](nc2onawsdeploymentworkflow.html) [ -- PDF version](nc2onawsdeploymentworkflow.pdf)
 
