@@ -1,5 +1,5 @@
 # squasta.github.io
-[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : July 27th 2026)
+[Stanislas Quastana](https://stanislas.io)'s mindmaps repo  (still work in progress...Last update : September 14th 2026)
 
 You will find here a lot of mindmaps, workflows full of links to documentations on Nutanix, Microsoft Azure, AWS, Kubernetes, FinOps, Google Cloud, GenAI certifications...
 
@@ -71,6 +71,8 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 - [Multicloud Snapshot Technology (MST) with Pilot Light Deployment](mstwithpilotlight.html)    [ -- PDF version](drtonc2configurationworkflow.pdf)
 
 - [Multicloud Snapshot Technology (MST) with NC2 on Azure - Deployment workflow](mstonnc2onazuredeploymentworkflow.html)    [ -- PDF version](mstonnc2onazuredeploymentworkflow.pdf)
+
+- [Multicloud Snapshot Technology (MST) with NC2 on AWS - Deployment workflow](mstonnc2onawsdeploymentworkflow.html)    [ -- PDF version](mstonnc2onawsdeploymentworkflow.pdf)
 
 - [Nutanix Licenses for Nutanix Cloud Clusters (NC2)](nutanixlicencesfornc2.html) [-- PDF version](nutanixlicencesfornc2.pdf)
 
