@@ -253,6 +253,11 @@ You will find here a lot of mindmaps, workflows full of links to documentations 
 - [Amazon GenAI Practitioner / AI Challenges](aichallenges.html) [ -- PDF version](aichallenges.pdf)
 
 
+## AWS Security Specialist
+
+- [AWS Security](awssecurity.html) [ -- PDF version](awssecurity.pdf)
+
+
 ## Observability
 
 - [OpenTelemetry](opentelemetry.html) [ -- SVG version](OpenTelemetry.svg)
